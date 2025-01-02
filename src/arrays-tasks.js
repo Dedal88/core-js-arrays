@@ -102,8 +102,20 @@ function findAllOccurrences(arr, item) {
  *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  return arr.filter((item) => {
+    if (
+      item !== 0 &&
+      item !== false &&
+      Number.isNaN(item) !== true &&
+      item !== '' &&
+      item !== undefined &&
+      item !== null
+    ) {
+      return item;
+    }
+    return false;
+  });
 }
 
 /**
@@ -116,8 +128,10 @@ function removeFalsyValues(/* arr */) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  return arr.map((item) => {
+    return item.length;
+  });
 }
 
 /**
@@ -134,8 +148,16 @@ function getStringsLength(/* arr */) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  const sum = arr.reduce((akk, item) => {
+    return akk + item;
+  }, 0);
+  let total = sum / arr.length;
+  total = Number(Number.isInteger(total) ? total : total.toFixed(2));
+  return total;
 }
 
 /**
@@ -148,8 +170,17 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  let total;
+  arr.every((item) => {
+    if (String(item).length === String(arr[0]).length) {
+      total = true;
+    } else {
+      total = false;
+    }
+    return item;
+  });
+  return total;
 }
 
 /**
