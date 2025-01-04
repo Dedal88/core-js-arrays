@@ -626,7 +626,6 @@ function shiftArray(arr, n) {
     total = arr.flat();
   } else if (n < 0) {
     arrAdd = arr.splice(0, Math.abs(n));
-    console.log(arrAdd);
     arr.push(arrAdd);
     total = arr.flat();
   }
