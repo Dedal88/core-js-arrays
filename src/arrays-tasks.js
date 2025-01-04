@@ -491,8 +491,16 @@ function getIdentityMatrix(n) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  function isNechet(i) {
+    if (i % 2 === 0) {
+      return false;
+    }
+    return true;
+  }
+  const total = [];
+  numbers.map((item, indx) => (isNechet(item) ? total.push(indx) : item));
+  return total;
 }
 
 /**
@@ -505,8 +513,17 @@ function getIndicesOfOddNumbers(/* numbers */) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+  const zeroes = '000000';
+  const lattice = '#';
+  const arr1 = arr.map((item) => item.toString(16).toUpperCase());
+  const total = arr1.map(
+    (item) => lattice + zeroes.slice(0, zeroes.length - item.length) + item
+  );
+  return total;
 }
 
 /**
@@ -523,8 +540,14 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  if (arr.length === 0) {
+    return [];
+  }
+  return arr
+    .sort((a, b) => a - b)
+    .reverse()
+    .slice(0, n);
 }
 
 /**
@@ -539,8 +562,10 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const total = [];
+  arr1.map((item) => (arr2.includes(item) ? total.push(item) : item));
+  return total;
 }
 
 /**
